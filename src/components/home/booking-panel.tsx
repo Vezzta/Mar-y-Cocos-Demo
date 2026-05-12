@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import type { Villa } from "@/content";
 import { villas } from "@/content";
-import { activeBookingProvider } from "@/features/booking";
+import { activeBookingProvider, getBookingAction } from "@/features/booking";
 
 function MiniIcon({ children }: { children: React.ReactNode }) {
   return (
@@ -22,6 +22,8 @@ export function BookingPanel({
 }) {
   const [step, setStep] = useState(1);
   const [villa, setVilla] = useState(selectedVilla?.name || "Casa Cocos");
+  const primaryBookingAction = getBookingAction("primary");
+  const completionBookingAction = getBookingAction("completion");
 
   return (
     <div
@@ -33,7 +35,7 @@ export function BookingPanel({
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-center justify-between bg-[#7A3A3A] px-6 py-5 text-white">
-          <div className="font-display text-3xl">Reserva demo</div>
+          <div className="font-display text-3xl">Reservar tu estancia</div>
           <button
             onClick={onClose}
             className="rounded-full bg-white/10 p-2 text-xl hover:bg-white/20"
@@ -121,8 +123,10 @@ export function BookingPanel({
               <button
                 onClick={() => setStep(2)}
                 className="w-full rounded-2xl bg-[#7A3A3A] px-6 py-4 text-sm font-black uppercase tracking-widest text-white transition hover:bg-[#6E3030]"
+                data-booking-event={primaryBookingAction.eventName}
+                data-booking-kind={primaryBookingAction.kind}
               >
-                {activeBookingProvider.presentation.primaryCta}
+                {primaryBookingAction.label}
               </button>
             </div>
           ) : null}
@@ -197,9 +201,26 @@ export function BookingPanel({
                   <strong>Continuación segura</strong>
                 </div>
               </div>
-              <button className="mt-6 w-full rounded-2xl bg-[#7A3A3A] px-6 py-4 text-sm font-black uppercase tracking-widest text-white transition hover:bg-[#6E3030]">
-                {activeBookingProvider.presentation.completionLabel}
-              </button>
+              {completionBookingAction.kind === "navigate_external" &&
+              completionBookingAction.href ? (
+                <a
+                  href={completionBookingAction.href}
+                  target={completionBookingAction.target}
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-[#7A3A3A] px-6 py-4 text-sm font-black uppercase tracking-widest text-white transition hover:bg-[#6E3030]"
+                  data-booking-event={completionBookingAction.eventName}
+                  data-booking-kind={completionBookingAction.kind}
+                >
+                  {completionBookingAction.label}
+                </a>
+              ) : (
+                <button
+                  className="mt-6 w-full rounded-2xl bg-[#7A3A3A] px-6 py-4 text-sm font-black uppercase tracking-widest text-white transition hover:bg-[#6E3030]"
+                  data-booking-event={completionBookingAction.eventName}
+                  data-booking-kind={completionBookingAction.kind}
+                >
+                  {completionBookingAction.label}
+                </button>
+              )}
             </div>
           ) : null}
         </div>

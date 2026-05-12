@@ -10,7 +10,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "¿Se aceptan niños o mascotas?",
-    a: "El sitio puede mostrar políticas por villa. Para este demo se plantea una sección clara de reglas antes de reservar.",
+    a: "Las políticas pueden variar según la villa y la temporada. La recomendación es confirmarlas al momento de reservar para asegurar la estancia ideal.",
   },
   {
     q: "¿Incluye servicio de limpieza?",
@@ -18,6 +18,6 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "¿Puedo pagar en línea?",
-    a: "La intención es conectar el frontend con un PMS o booking engine tercero para manejar pagos, disponibilidad y confirmaciones.",
+    a: "El sitio está preparado para incorporar un motor de reservas externo que permita gestionar pagos, disponibilidad y confirmaciones de forma segura.",
   },
 ];

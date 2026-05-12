@@ -1,7 +1,15 @@
 import Link from "next/link";
+import {
+  amenityList,
+  experiences,
+  faqs,
+  gallery,
+  resolvedSiteMedia,
+  siteMedia,
+  villas,
+} from "@/content";
 import { PageSectionTitle } from "@/components/site-chrome";
 import { VillaCard } from "@/components/villa-card";
-import { amenityList, experiences, faqs, gallery, villas } from "@/content";
 
 export function HomeFeatureStrip() {
   return (
@@ -71,6 +79,9 @@ export function HomeEditorialGrid() {
             <Link
               href="/villas/casa-cocos"
               className="text-sm font-black uppercase tracking-[0.12em] text-[#7A3A3A]"
+              data-analytics-event="navigation_editorial_click"
+              data-analytics-category="navigation"
+              data-analytics-label="Ver villa protagonista"
             >
               Ver villa →
             </Link>
@@ -110,6 +121,9 @@ export function HomeEditorialGrid() {
           <Link
             href="/ubicacion"
             className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.12em] text-[#7A3A3A]"
+            data-analytics-event="navigation_editorial_click"
+            data-analytics-category="navigation"
+            data-analytics-label="Ver más detalles"
           >
             Ver más detalles →
           </Link>
@@ -135,6 +149,9 @@ export function HomeEditorialGrid() {
           <Link
             href="/experiencias"
             className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.12em] text-[#7A3A3A]"
+            data-analytics-event="navigation_editorial_click"
+            data-analytics-category="navigation"
+            data-analytics-label="Ver todas las experiencias"
           >
             Ver todas las experiencias →
           </Link>
@@ -195,6 +212,9 @@ export function HomeGallerySection({
               key={image}
               onClick={() => onSelectImage(image)}
               className="thumb-hover h-32 overflow-hidden rounded-[1.5rem] ring-[#7A3A3A] md:h-[132px]"
+              data-analytics-event="gallery_thumbnail_click"
+              data-analytics-category="media"
+              data-analytics-label="Galería home"
             >
               <img src={image} alt="Galería" className="h-full w-full object-cover" />
             </button>
@@ -262,6 +282,9 @@ export function HomeLocationAndTestimonialSection() {
           <Link
             href="/ubicacion"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#FAF6EF] px-6 py-3 text-sm font-black uppercase tracking-widest text-[#7A3A3A]"
+            data-analytics-event="navigation_location_cta_click"
+            data-analytics-category="navigation"
+            data-analytics-label="Explorar ubicación"
           >
             Explorar ubicación →
           </Link>
@@ -303,8 +326,8 @@ export function HomeLocationAndTestimonialSection() {
             </p>
             <div className="mt-8 overflow-hidden rounded-[1.7rem]">
               <img
-                src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80"
-                alt="Costa del Pacífico"
+                src={resolvedSiteMedia.locationEditorial}
+                alt={siteMedia.locationEditorial.alt}
                 className="h-[280px] w-full object-cover"
               />
             </div>
@@ -396,12 +419,18 @@ export function HomeCtaSection({
           <button
             onClick={onOpenBooking}
             className="magnetic-cta rounded-xl bg-[#FAF6EF] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#7A3A3A]"
+            data-analytics-event="navigation_footer_cta_click"
+            data-analytics-category="navigation"
+            data-analytics-label="Reservar ahora"
           >
             Reservar ahora
           </button>
           <Link
             href="/villas"
             className="rounded-xl border border-white/20 px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/10"
+            data-analytics-event="navigation_footer_cta_click"
+            data-analytics-category="navigation"
+            data-analytics-label="Ver villas"
           >
             Ver villas
           </Link>

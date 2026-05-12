@@ -7,7 +7,7 @@ export default function ExperiencesPage() {
       <PageIntro
         eyebrow="Experiencias"
         title="El viaje empieza más allá de la habitación"
-        copy="Esta página deja espacio para vender estilo de viaje, no solo hospedaje. Cuando lleguen los videos y nuevas fotografías, este bloque puede subir muchísimo la percepción de valor."
+        copy="Una estancia memorable también se construye con mar, gastronomía, aventura suave y momentos que conectan con el ritmo de Manzanillo."
       />
 
       <section className="pt-14">

@@ -22,6 +22,29 @@ npm run lint
 npm run typecheck
 ```
 
+## Configuración
+
+El sitio ya puede seleccionar el proveedor de reservas activo por variable de entorno:
+
+```bash
+NEXT_PUBLIC_BOOKING_PROVIDER=lead-capture
+```
+
+Valores soportados hoy:
+
+- `lead-capture`
+- `external-engine-placeholder`
+
+Toma como referencia [.env.example](/Users/eltonsenftleben/VIsual%20Studio%20Code%20%20/mar-cocos-next-demo/.env.example).
+
+Analítica opcional:
+
+```bash
+NEXT_PUBLIC_ANALYTICS_DEBUG=false
+NEXT_PUBLIC_GA_MEASUREMENT_ID=
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=
+```
+
 ### Flujo local recomendado
 
 Desarrollo:
@@ -77,6 +100,9 @@ src/
 - El contenido vive separado por dominio dentro de `src/content`.
 - La UI no debe depender directamente de un PMS específico.
 - La evolución de `Opción A` a `Opción B` debe ocurrir por adaptación de la capa `features/booking`, no rehaciendo páginas.
+- Los CTAs de reserva ya exponen metadatos `data-booking-*` para facilitar analítica futura.
+- Existe una capa ligera de tracking en `src/features/analytics` para instrumentar eventos sin acoplar la UI a un proveedor.
+- Los assets editoriales globales del sitio viven centralizados en `src/content/site-media.ts`.
 
 ## Estado funcional
 

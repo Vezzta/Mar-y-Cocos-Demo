@@ -5,8 +5,8 @@ export default function LocationPage() {
     <main className="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16">
       <PageIntro
         eyebrow="Ubicación"
-        title="Un lugar que ayuda a vender la experiencia"
-        copy="Esta página ya prepara el terreno para una narrativa más fuerte de destino. Cuando tengamos el punto exacto de Maps y materiales reales, se puede convertir en una mezcla de mapa, distancias, highlights del entorno y recomendaciones cercanas."
+        title="Un destino que acompaña la experiencia"
+        copy="Entre playa, vegetación tropical y atardeceres del Pacífico, la ubicación suma calma, accesibilidad y un contexto ideal para una estancia más íntima."
       />
 
       <section className="grid gap-8 pt-14 lg:grid-cols-[0.9fr_1.1fr]">

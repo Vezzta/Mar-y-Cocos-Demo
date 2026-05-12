@@ -131,6 +131,7 @@ Responsabilidad:
 - definir el modo actual de reservas;
 - exponer labels y comportamiento base;
 - controlar si el sitio está en `lead_capture`, `external_engine` o futuro `native_pms`.
+- seleccionar proveedor activo por entorno, sin editar componentes visuales.
 
 ### 3. Integración de reservas
 
@@ -169,6 +170,7 @@ Responsabilidad:
   - Little Hotelier;
   - Amenitiz;
   - Beds24;
+- fijar `NEXT_PUBLIC_BOOKING_PROVIDER` según el modo activo;
 - documentar:
   - tipo de integración;
   - link, widget, iframe o API;
@@ -206,16 +208,19 @@ Implementar un adaptador concreto:
 3. **Mantener contratos pequeños**
    El proveedor solo debe exponer lo que la UI necesita.
 
-4. **Evitar dependencias tempranas**
+4. **Declarar capacidades**
+   El proveedor debe describir si soporta disponibilidad real, reserva instantánea y prefill de datos.
+
+5. **Evitar dependencias tempranas**
    No integrar SDKs de PMS antes de definir proveedor final.
 
-5. **Preparar analítica desde la capa de CTA**
+6. **Preparar analítica desde la capa de CTA**
    Todos los botones críticos deben ser rastreables después.
 
-6. **Usar rutas limpias y estables**
+7. **Usar rutas limpias y estables**
    Las páginas de villa deben permanecer estables aunque cambie el backend de reservas.
 
-7. **Mantener archivos de media fuera del componente**
+8. **Mantener archivos de media fuera del componente**
    Los assets deben ir en `public/media/...` o en CMS futuro, nunca embebidos en lógica.
 
 ---

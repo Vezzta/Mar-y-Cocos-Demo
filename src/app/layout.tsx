@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookingEventTracker } from "@/features/analytics";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <div className="page-shell">
+          <BookingEventTracker />
           <SiteHeader />
           {children}
           <SiteFooter />

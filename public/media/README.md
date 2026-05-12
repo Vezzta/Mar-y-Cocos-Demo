@@ -21,3 +21,9 @@ Estructura sugerida:
 - `villas/casa-arena/gallery-01.jpg`
 
 Mientras no existan esos archivos, el sitio seguirá mostrando placeholders visuales y fotos de referencia.
+
+Notas:
+
+- Los assets editoriales globales del sitio están centralizados en `src/content/site-media.ts`.
+- Cuando un asset real quede listo, cambia su `status` a `ready` y conserva el `localPath`.
+- Mantén nombres estables para evitar tocar componentes visuales.

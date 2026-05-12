@@ -1,4 +1,4 @@
-import { gallery, mediaDeliveryGuide } from "@/content";
+import { gallery, mediaDeliveryGuide, siteMedia } from "@/content";
 import { AssetPlanCard } from "@/components/media-ready";
 import { PageIntro, PageSectionTitle } from "@/components/site-chrome";
 
@@ -17,9 +17,27 @@ export default function GalleryPage() {
             key={item.path}
             title={item.title}
             copy={item.copy}
-            path="Próximamente con material de la marca"
+            path={item.path}
           />
         ))}
+      </section>
+
+      <section className="pt-10">
+        <PageSectionTitle eyebrow="Selección visual" title="Piezas clave de la experiencia" />
+        <div className="grid gap-4 md:grid-cols-2">
+          {Object.values(siteMedia).map((asset) => (
+            <AssetPlanCard
+              key={asset.localPath}
+              title={asset.alt}
+              copy={
+                asset.status === "ready"
+                  ? "Material final integrado en la experiencia visual."
+                  : "Espacio reservado para la versión visual definitiva del sitio."
+              }
+              path={asset.localPath}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="pt-14">
@@ -31,6 +49,9 @@ export default function GalleryPage() {
                 src={image}
                 alt={`Galería ${index + 1}`}
                 className="h-full min-h-[220px] w-full rounded-[1.6rem] object-cover"
+                data-analytics-event="gallery_image_impression"
+                data-analytics-category="media"
+                data-analytics-label={`Galería ${index + 1}`}
               />
             </div>
           ))}

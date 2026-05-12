@@ -1,17 +1,20 @@
 import Link from "next/link";
-import { activeBookingProvider } from "@/features/booking";
+import { resolvedSiteMedia, siteMedia } from "@/content";
+import { getBookingAction } from "@/features/booking";
 
 export function HomeHeroSection({
   onOpenBooking,
 }: {
   onOpenBooking: () => void;
 }) {
+  const primaryBookingAction = getBookingAction("primary");
+
   return (
     <section id="inicio" className="relative overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2200&q=85"
-          alt="Villa tropical frente al mar"
+          src={resolvedSiteMedia.homeHero}
+          alt={siteMedia.homeHero.alt}
           className="hero-image h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(39,24,19,0.72)_0%,rgba(39,24,19,0.34)_42%,rgba(39,24,19,0.18)_100%)]" />
@@ -45,12 +48,18 @@ export function HomeHeroSection({
             <Link
               href="/villas"
               className="magnetic-cta rounded-full bg-[#FAF6EF] px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-[#7A3A3A] shadow-xl"
+              data-analytics-event="navigation_home_cta_click"
+              data-analytics-category="navigation"
+              data-analytics-label="Explora las villas"
             >
               Explora las villas
             </Link>
             <Link
               href="/galeria"
               className="rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-white backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/15"
+              data-analytics-event="navigation_home_cta_click"
+              data-analytics-category="navigation"
+              data-analytics-label="Ver galería"
             >
               Ver galería
             </Link>
@@ -78,7 +87,13 @@ export function HomeHeroSection({
             <Link href="/villas" className="rounded-2xl bg-white/10 px-4 py-3 transition duration-300 hover:bg-white/15">
               Explora todas las villas
             </Link>
-            <Link href="/experiencias" className="rounded-2xl bg-white/10 px-4 py-3 transition duration-300 hover:bg-white/15">
+            <Link
+              href="/experiencias"
+              className="rounded-2xl bg-white/10 px-4 py-3 transition duration-300 hover:bg-white/15"
+              data-analytics-event="navigation_hero_panel_click"
+              data-analytics-category="navigation"
+              data-analytics-label="Descubre experiencias"
+            >
               Descubre experiencias
             </Link>
           </div>
@@ -105,8 +120,10 @@ export function HomeHeroSection({
             <button
               onClick={onOpenBooking}
               className="magnetic-cta booking-submit rounded-2xl bg-[#7A3A3A] px-8 py-4 text-sm font-black uppercase tracking-widest text-white xl:min-w-56"
+              data-booking-event={primaryBookingAction.eventName}
+              data-booking-kind={primaryBookingAction.kind}
             >
-              {activeBookingProvider.presentation.primaryCta}
+              {primaryBookingAction.label}
             </button>
           </div>
         </div>

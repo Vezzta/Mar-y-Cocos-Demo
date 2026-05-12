@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { primaryNav } from "@/content";
-import { activeBookingProvider } from "@/features/booking";
+import { getBookingAction } from "@/features/booking";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
@@ -40,6 +40,15 @@ export function Logo({ dark = false }: { dark?: boolean }) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const stickyBookingAction = getBookingAction("sticky");
+
+  const isActiveNavItem = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -70,7 +79,10 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className={`nav-link ${pathname === item.href ? "nav-link-active" : ""}`}
+              className={`nav-link ${isActiveNavItem(item.href) ? "nav-link-active" : ""}`}
+              data-analytics-event="navigation_primary_click"
+              data-analytics-category="navigation"
+              data-analytics-label={item.label}
             >
               {item.label}
             </Link>
@@ -78,12 +90,15 @@ export function SiteHeader() {
         </nav>
 
         <Link
-          href="/villas"
+          href={stickyBookingAction.href ?? "/villas"}
+          target={stickyBookingAction.target}
           className={`hidden rounded-full bg-[#FAF6EF] px-6 text-xs font-black uppercase tracking-[0.18em] text-[#7A3A3A] transition hover:-translate-y-0.5 hover:bg-white hover:shadow-xl md:inline-flex ${
             scrolled ? "py-2.5" : "py-3"
           }`}
+          data-booking-event={stickyBookingAction.eventName}
+          data-booking-kind={stickyBookingAction.kind}
         >
-          {activeBookingProvider.presentation.stickyCta}
+          {stickyBookingAction.label}
         </Link>
       </div>
     </header>
@@ -122,7 +137,14 @@ export function SiteFooter() {
           </h3>
           <div className="mt-5 grid gap-2 text-white/75">
             {primaryNav.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-white">
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hover:text-white"
+                data-analytics-event="navigation_footer_click"
+                data-analytics-category="navigation"
+                data-analytics-label={item.label}
+              >
                 {item.label}
               </Link>
             ))}
@@ -147,8 +169,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-white/45 md:px-8">
-        © 2025 Mar & Cocos Hotel/Villas. Demo conceptual para frontend Next.js +
-        Tailwind + PMS/booking engine tercero.
+        © 2025 Mar & Cocos Hotel/Villas. Todos los derechos reservados.
       </div>
     </footer>
   );

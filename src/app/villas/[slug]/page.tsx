@@ -108,10 +108,10 @@ export default function VillaDetailPage({ params }: Props) {
 
           <div className="mt-10">
             <VideoPlaceholder
-              eyebrow="Próximamente"
+              eyebrow="Narrativa visual"
               title="Una mirada más cinematográfica a la experiencia"
-              copy="Este espacio está pensado para mostrar la atmósfera de la villa con movimiento, luz natural y una narrativa más sensorial."
-              fileHint="Video editorial de la villa"
+              copy="Este bloque está reservado para una pieza breve que muestre la atmósfera, la luz y el ritmo natural de la estancia."
+              fileHint="Video principal de la villa"
             />
           </div>
 
