@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon, type IconName } from "@/components/icons";
 import {
   amenityList,
   experiences,
@@ -16,14 +17,14 @@ export function HomeFeatureStrip() {
     <section className="border-b border-[#E6D9C9] bg-[linear-gradient(180deg,#fffdf9,#f8f0e6)]">
       <div className="mx-auto grid max-w-7xl gap-5 px-5 py-6 md:grid-cols-4 md:px-8">
         {[
-          ["Frente al mar", "Acceso directo a la playa"],
-          ["Villas privadas", "Diseñadas para tu descanso"],
-          ["Hospitalidad cálida", "Servicio personalizado"],
-          ["Experiencias locales", "Conexión auténtica"],
-        ].map(([title, copy]) => (
+          ["wave", "Frente al mar", "Acceso directo a la playa"],
+          ["villa", "Villas privadas", "Diseñadas para tu descanso"],
+          ["heartShield", "Hospitalidad cálida", "Servicio personalizado"],
+          ["sparkle", "Experiencias locales", "Conexión auténtica"],
+        ].map(([icon, title, copy]) => (
           <div key={title} className="feature-strip-item animate-fade-up">
             <div className="grid h-10 w-10 place-items-center rounded-full border border-[#E6D9C9] bg-white text-[#7A3A3A]">
-              ✦
+              <Icon name={icon as IconName} className="h-[18px] w-[18px]" />
             </div>
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7A3A3A]">
@@ -113,7 +114,9 @@ export function HomeEditorialGrid() {
                 key={label}
                 className="flex items-center gap-3 rounded-2xl border border-[#EEE2D4] bg-[#FFFCF8] px-4 py-4"
               >
-                <span className="text-xl text-[#7A3A3A]">{icon}</span>
+                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#F4ECE3] text-[#7A3A3A]">
+                  <Icon name={icon} className="h-5 w-5" />
+                </span>
                 <span className="text-sm font-medium text-[#5B4D43]">{label}</span>
               </div>
             ))}
@@ -177,7 +180,9 @@ export function HomeAmenitiesSection() {
               key={label}
               className="rounded-[1.5rem] bg-[#FAF6EF] p-5 text-center shadow-sm"
             >
-              <div className="mx-auto text-3xl text-[#7A3A3A]">{icon}</div>
+              <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white text-[#7A3A3A] shadow-sm">
+                <Icon name={icon} className="h-6 w-6" />
+              </div>
               <div className="mt-3 text-sm font-bold text-[#5B4D43]">{label}</div>
             </div>
           ))}
@@ -249,9 +254,9 @@ export function HomeExperiencesSection() {
                 />
               </div>
               <div className="p-6">
-                <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-[#E9DFCF] text-2xl text-[#7A3A3A]">
-                  {exp.icon}
-                </div>
+              <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-[#E9DFCF] text-[#7A3A3A]">
+                <Icon name={exp.icon} className="h-[22px] w-[22px]" />
+              </div>
                 <h3 className="font-display text-3xl">{exp.title}</h3>
                 <p className="mt-3 leading-7 text-[#6B5D53]">{exp.copy}</p>
               </div>
@@ -304,7 +309,7 @@ export function HomeLocationAndTestimonialSection() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-5 shadow-2xl">
             <div className="flex items-center gap-3">
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#7A3A3A] text-white">
-                📍
+                <Icon name="location" className="h-5 w-5" />
               </div>
               <div>
                 <div className="font-display text-2xl">Mar & Cocos</div>
@@ -383,7 +388,9 @@ export function HomeFaqSection({
                   className="flex w-full items-center justify-between gap-4 bg-[#FAF6EF] p-4 text-left font-bold"
                 >
                   {item.q}
-                  <span className={`transition ${openIndex === index ? "rotate-180" : ""}`}>⌄</span>
+                  <span className={`transition ${openIndex === index ? "rotate-180" : ""}`}>
+                    <Icon name="chevronDown" className="h-4 w-4 text-[#7A3A3A]" />
+                  </span>
                 </button>
                 {openIndex === index ? (
                   <p className="p-4 leading-7 text-[#6B5D53]">{item.a}</p>

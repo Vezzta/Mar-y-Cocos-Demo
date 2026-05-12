@@ -1,3 +1,4 @@
+import { Icon } from "@/components/icons";
 import { PageIntro, PageSectionTitle } from "@/components/site-chrome";
 
 export default function LocationPage() {
@@ -34,7 +35,7 @@ export default function LocationPage() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-5 shadow-2xl">
             <div className="flex items-center gap-3">
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#7A3A3A] text-white">
-                📍
+                <Icon name="location" className="h-5 w-5" />
               </div>
               <div>
                 <div className="font-display text-2xl">Mar & Cocos</div>

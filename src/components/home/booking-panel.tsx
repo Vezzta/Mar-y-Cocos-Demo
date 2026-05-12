@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import { Icon } from "@/components/icons";
 import type { Villa } from "@/content";
 import { villas } from "@/content";
 import { activeBookingProvider, getBookingAction } from "@/features/booking";
 
 function MiniIcon({ children }: { children: React.ReactNode }) {
   return (
-    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#E9DFCF] text-xl text-[#7A3A3A]">
+    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#E9DFCF] text-[#7A3A3A]">
       {children}
     </span>
   );
@@ -91,7 +92,7 @@ export function BookingPanel({
                     </span>
                     <div className="mt-2 flex items-center justify-between text-[#2D2420]">
                       <span className="font-semibold">{value}</span>
-                      <span>📅</span>
+                      <Icon name="calendar" className="h-5 w-5 text-[#7A3A3A]/75" />
                     </div>
                   </div>
                 ))}
@@ -173,7 +174,9 @@ export function BookingPanel({
           {step === 3 ? (
             <div className="mt-8 rounded-3xl bg-white p-5 shadow-sm">
               <div className="flex items-start gap-4">
-                <MiniIcon>✓</MiniIcon>
+                <MiniIcon>
+                  <Icon name="check" className="h-5 w-5" />
+                </MiniIcon>
                 <div>
                   <h3 className="font-display text-3xl text-[#2D2420]">
                     Resumen de reserva

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Icon } from "@/components/icons";
 import { primaryNav } from "@/content";
 import { getBookingAction } from "@/features/booking";
 
@@ -126,9 +127,18 @@ export function SiteFooter() {
             Contacto
           </h3>
           <div className="mt-5 space-y-3 text-white/75">
-            <div>☎ +52 314 123 4567</div>
-            <div>✉ hola@marcocos.com</div>
-            <div>📍 Manzanillo, Colima</div>
+            <div className="flex items-center gap-3">
+              <Icon name="phone" className="h-4 w-4" />
+              <span>+52 314 123 4567</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Icon name="mail" className="h-4 w-4" />
+              <span>hola@marcocos.com</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Icon name="location" className="h-4 w-4" />
+              <span>Manzanillo, Colima</span>
+            </div>
           </div>
         </div>
         <div>

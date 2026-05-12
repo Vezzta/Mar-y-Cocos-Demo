@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon, type IconName } from "@/components/icons";
 import { resolvedSiteMedia, siteMedia } from "@/content";
 import { getBookingAction } from "@/features/booking";
 
@@ -102,10 +103,10 @@ export function HomeHeroSection({
         <div className="animate-fade-up animation-delay-4 absolute bottom-6 left-5 right-5 rounded-[2rem] border border-white/40 bg-[#FAF6EF]/95 p-4 shadow-2xl backdrop-blur md:left-8 md:right-8 lg:bottom-10">
           <div className="booking-grid grid gap-3 xl:grid-cols-[1fr_1fr_1fr_1.15fr_auto]">
             {[
-              ["Check-in", "24 May 2025", "📅"],
-              ["Check-out", "27 May 2025", "📅"],
-              ["Huéspedes", "2 huéspedes", "👥"],
-              ["Tipo de alojamiento", "Todas las villas", "⌄"],
+              ["Check-in", "24 May 2025", "calendar"],
+              ["Check-out", "27 May 2025", "calendar"],
+              ["Huéspedes", "2 huéspedes", "users"],
+              ["Tipo de alojamiento", "Todas las villas", "chevronDown"],
             ].map(([label, value, icon]) => (
               <div key={label} className="booking-cell rounded-2xl bg-white p-4">
                 <div className="text-[10px] font-black uppercase tracking-widest text-[#7A3A3A]">
@@ -113,7 +114,10 @@ export function HomeHeroSection({
                 </div>
                 <div className="mt-2 flex items-center justify-between font-black">
                   <span>{value}</span>
-                  <span>{icon}</span>
+                  <Icon
+                    name={icon as IconName}
+                    className="h-5 w-5 text-[#7A3A3A]/75"
+                  />
                 </div>
               </div>
             ))}

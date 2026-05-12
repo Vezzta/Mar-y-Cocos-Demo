@@ -1,3 +1,4 @@
+import { Icon, type IconName } from "@/components/icons";
 import { VideoPlaceholder } from "@/components/media-ready";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -63,14 +64,14 @@ export default function VillaDetailPage({ params }: Props) {
       <section className="border-b border-[#E6D9C9] bg-[linear-gradient(180deg,#fffdf9,#f8f0e6)]">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-6 md:grid-cols-4 md:px-8">
           {[
-            [villa.rooms, "Distribución privada"],
-            [villa.bathrooms, "Comodidad funcional"],
-            [villa.guests, "Capacidad ideal"],
-            [villa.price, "Tarifa desde"],
-          ].map(([title, copy]) => (
+            ["bed", villa.rooms, "Distribución privada"],
+            ["bath", villa.bathrooms, "Comodidad funcional"],
+            ["users", villa.guests, "Capacidad ideal"],
+            ["sparkle", villa.price, "Tarifa desde"],
+          ].map(([icon, title, copy]) => (
             <div key={copy} className="feature-strip-item">
               <div className="grid h-10 w-10 place-items-center rounded-full border border-[#E6D9C9] bg-white text-[#7A3A3A]">
-                ✦
+                <Icon name={icon as IconName} className="h-[18px] w-[18px]" />
               </div>
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7A3A3A]">
@@ -142,9 +143,18 @@ export default function VillaDetailPage({ params }: Props) {
             <div className="mt-1 text-sm text-[#6B5D53]">por noche</div>
 
             <div className="mt-6 space-y-3 text-sm text-[#6B5D53]">
-              <div>🛏️ {villa.rooms}</div>
-              <div>🛁 {villa.bathrooms}</div>
-              <div>👥 {villa.guests}</div>
+              <div className="flex items-center gap-3">
+                <Icon name="bed" className="h-[18px] w-[18px] text-[#7A3A3A]" />
+                <span>{villa.rooms}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Icon name="bath" className="h-[18px] w-[18px] text-[#7A3A3A]" />
+                <span>{villa.bathrooms}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Icon name="users" className="h-[18px] w-[18px] text-[#7A3A3A]" />
+                <span>{villa.guests}</span>
+              </div>
             </div>
 
             <Link

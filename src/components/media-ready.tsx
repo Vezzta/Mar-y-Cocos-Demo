@@ -1,3 +1,5 @@
+import { Icon } from "@/components/icons";
+
 export function AssetPlanCard({
   title,
   copy,
@@ -45,8 +47,8 @@ export function VideoPlaceholder({
           {fileHint}
         </p>
       </div>
-      <div className="grid h-16 w-16 place-items-center rounded-full bg-white/15 text-2xl text-white backdrop-blur">
-        ▶
+      <div className="grid h-16 w-16 place-items-center rounded-full bg-white/15 text-white backdrop-blur">
+        <Icon name="play" className="h-7 w-7" />
       </div>
     </div>
   );

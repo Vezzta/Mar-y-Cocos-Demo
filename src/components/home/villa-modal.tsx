@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Icon } from "@/components/icons";
 import type { Villa } from "@/content";
 
 export function VillaModal({
@@ -67,9 +68,18 @@ export function VillaModal({
             <div className="mt-1 text-3xl font-black text-[#2D2420]">{villa.price}</div>
             <div className="text-sm text-[#6B5D53]">por noche</div>
             <div className="mt-5 space-y-3 text-sm text-[#6B5D53]">
-              <div>🛏️ {villa.rooms}</div>
-              <div>🛁 {villa.bathrooms}</div>
-              <div>👥 {villa.guests}</div>
+              <div className="flex items-center gap-3">
+                <Icon name="bed" className="h-[18px] w-[18px] text-[#7A3A3A]" />
+                <span>{villa.rooms}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Icon name="bath" className="h-[18px] w-[18px] text-[#7A3A3A]" />
+                <span>{villa.bathrooms}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Icon name="users" className="h-[18px] w-[18px] text-[#7A3A3A]" />
+                <span>{villa.guests}</span>
+              </div>
             </div>
             <button
               onClick={() => onReserve(villa)}
