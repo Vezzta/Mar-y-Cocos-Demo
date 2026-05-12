@@ -5,7 +5,7 @@ export function AssetPlanCard({
 }: {
   title: string;
   copy: string;
-  path: string;
+  path?: string;
 }) {
   return (
     <div className="rounded-[1.4rem] border border-[#E6D9C9] bg-white p-5 shadow-sm">
@@ -13,9 +13,11 @@ export function AssetPlanCard({
         {title}
       </p>
       <p className="mt-3 text-sm leading-6 text-[#6B5D53]">{copy}</p>
-      <p className="mt-4 text-xs uppercase tracking-[0.16em] text-[#B67D6E]">
-        {path}
-      </p>
+      {path ? (
+        <p className="mt-4 text-xs uppercase tracking-[0.16em] text-[#B67D6E]">
+          {path}
+        </p>
+      ) : null}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { gallery, mediaDeliveryGuide, siteMedia } from "@/content";
+import { gallery } from "@/content";
 import { AssetPlanCard } from "@/components/media-ready";
 import { PageIntro, PageSectionTitle } from "@/components/site-chrome";
 
@@ -12,29 +12,45 @@ export default function GalleryPage() {
       />
 
       <section className="grid gap-4 pt-8 md:grid-cols-3">
-        {mediaDeliveryGuide.map((item) => (
+        {[
+          {
+            title: "Hero costero",
+            copy: "Una apertura amplia y luminosa que transmita el carácter íntimo del refugio frente al mar.",
+          },
+          {
+            title: "Ritmo editorial",
+            copy: "Imágenes que mezclen arquitectura, detalle, paisaje y atmósfera para sostener una narrativa más aspiracional.",
+          },
+          {
+            title: "Lifestyle boutique",
+            copy: "Momentos de descanso, sobremesa, luz dorada y conexión con el Pacífico como parte de la experiencia.",
+          },
+        ].map((item) => (
           <AssetPlanCard
-            key={item.path}
+            key={item.title}
             title={item.title}
             copy={item.copy}
-            path={item.path}
           />
         ))}
       </section>
 
       <section className="pt-10">
-        <PageSectionTitle eyebrow="Selección visual" title="Piezas clave de la experiencia" />
+        <PageSectionTitle eyebrow="Dirección visual" title="Piezas clave de la experiencia" />
         <div className="grid gap-4 md:grid-cols-2">
-          {Object.values(siteMedia).map((asset) => (
+          {[
+            {
+              title: "Llegada y primera impresión",
+              copy: "La imagen principal debe sentirse cálida, abierta y memorable desde el primer scroll.",
+            },
+            {
+              title: "Contexto y entorno",
+              copy: "La costa, la vegetación y los atardeceres deben ayudar a vender la estancia como destino.",
+            },
+          ].map((asset) => (
             <AssetPlanCard
-              key={asset.localPath}
-              title={asset.alt}
-              copy={
-                asset.status === "ready"
-                  ? "Material final integrado en la experiencia visual."
-                  : "Espacio reservado para la versión visual definitiva del sitio."
-              }
-              path={asset.localPath}
+              key={asset.title}
+              title={asset.title}
+              copy={asset.copy}
             />
           ))}
         </div>
