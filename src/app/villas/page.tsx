@@ -1,6 +1,6 @@
+import { villas } from "@/content";
 import { PageIntro, PageSectionTitle } from "@/components/site-chrome";
 import { VillaCard } from "@/components/villa-card";
-import { villas } from "@/lib/site-data";
 
 export default function VillasPage() {
   return (

@@ -94,8 +94,14 @@ src/
         lead-capture-provider.ts
         external-engine-provider.ts
 
-  lib/
-    site-data.ts
+  content/
+    navigation.ts
+    villas.ts
+    experiences.ts
+    gallery.ts
+    faq.ts
+    amenities.ts
+    media-delivery.ts
 ```
 
 ---
@@ -191,7 +197,7 @@ Implementar un adaptador concreto:
 ## Buenas prácticas recomendadas
 
 1. **No mezclar contenido con comportamiento de negocio**
-   `site-data.ts` describe catálogo y contenido.
+   `src/content/*` describe catálogo y contenido.
    `features/booking/*` describe el modo de reserva.
 
 2. **No hardcodear nombres de proveedor en la UI**
@@ -234,4 +240,3 @@ Cuando migren a Opción B:
 - [ ] Sustituir assets de referencia por fotos y video reales
 - [ ] Formalizar contacto / WhatsApp / formulario final de Opción A
 - [ ] Implementar adaptador real para Opción B cuando sea aprobado
-

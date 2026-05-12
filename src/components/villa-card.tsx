@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Villa } from "@/lib/site-data";
+import type { Villa } from "@/content";
 
 export function VillaCard({
   villa,

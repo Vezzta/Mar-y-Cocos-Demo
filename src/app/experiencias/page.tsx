@@ -1,5 +1,5 @@
+import { experiences } from "@/content";
 import { PageIntro, PageSectionTitle } from "@/components/site-chrome";
-import { experiences } from "@/lib/site-data";
 
 export default function ExperiencesPage() {
   return (

@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { primaryNav } from "@/content";
 import { activeBookingProvider } from "@/features/booking";
-import { primaryNav } from "@/lib/site-data";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (

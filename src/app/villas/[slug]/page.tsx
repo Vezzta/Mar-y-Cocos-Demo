@@ -2,7 +2,7 @@ import { VideoPlaceholder } from "@/components/media-ready";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getVillaBySlug, villas } from "@/lib/site-data";
+import { getVillaBySlug, villas } from "@/content";
 
 type Props = {
   params: {

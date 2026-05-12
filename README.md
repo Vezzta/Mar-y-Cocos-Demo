@@ -1,107 +1,122 @@
-# Mar & Cocos — Demo interactivo
+# Mar & Cocos
 
-Demo conceptual de homepage para **Mar & Cocos Hotel/Villas**, construido con:
+Sitio conceptual para **Mar & Cocos Hotel/Villas**, construido con `Next.js`, `TypeScript` y `Tailwind CSS`, preparado como export estático para GitHub Pages y pensado para evolucionar de una experiencia de captación (`Opción A`) a una integración futura con `PMS / booking engine` (`Opción B`).
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- React Client Components
+## Stack
 
-## Requisitos
+- `Next.js 14`
+- `React 18`
+- `TypeScript`
+- `Tailwind CSS`
+- `App Router`
+- export estático con `output: "export"`
 
-- Node.js 20 o superior recomendado
-- npm
-
-## Cómo correr el proyecto
+## Scripts
 
 ```bash
 npm install
 npm run dev
+npm run build
+npm run preview
+npm run lint
+npm run typecheck
 ```
 
-Después abre:
+### Flujo local recomendado
+
+Desarrollo:
+
+```bash
+npm run dev
+```
+
+Vista previa del sitio estático exportado:
+
+```bash
+npm run preview
+```
+
+`npm run start` también sirve el contenido estático de `out/` y ya no usa `next start`.
+
+## Arquitectura actual
 
 ```text
-http://localhost:3000
+src/
+  app/
+    page.tsx
+    villas/
+    experiencias/
+    galeria/
+    ubicacion/
+
+  components/
+    home/
+    media-ready.tsx
+    site-chrome.tsx
+    villa-card.tsx
+
+  content/
+    amenities.ts
+    experiences.ts
+    faq.ts
+    gallery.ts
+    media-delivery.ts
+    navigation.ts
+    villas.ts
+
+  features/
+    booking/
+      config.ts
+      index.ts
+      providers/
 ```
 
-## Qué incluye el demo
+## Principios de implementación
 
-- Homepage responsive
-- Navegación por secciones
-- Menú móvil
-- Tarjetas clickeables de villas
-- Modal de detalle de villa
-- Flujo de reserva en 3 pasos
-- Galería interactiva
-- FAQ tipo acordeón
-- Footer con contacto/newsletter
+- Las URLs públicas pueden estar en español; las estructuras internas del código deben mantenerse consistentes y predecibles.
+- El contenido vive separado por dominio dentro de `src/content`.
+- La UI no debe depender directamente de un PMS específico.
+- La evolución de `Opción A` a `Opción B` debe ocurrir por adaptación de la capa `features/booking`, no rehaciendo páginas.
 
-## Notas importantes
+## Estado funcional
 
-Este proyecto es un demo visual/interactivo.  
-Las reservas, pagos y disponibilidad todavía no están conectados a un PMS real.
+Incluye:
 
-La idea recomendada para producción es conectar el botón/flujo de reserva con un PMS o booking engine externo, por ejemplo Cloudbeds, Little Hotelier, Amenitiz, Guesty, VikBooking, MotoPress u otro sistema elegido por el cliente.
+- Home editorial multipágina
+- Páginas de villas
+- Página individual por villa
+- Experiencias, galería y ubicación
+- Flujo visual de intención de reserva
+- Preparación para media real en `public/media`
 
-## Estructura principal
+No incluye todavía:
 
-```text
-src/app/page.tsx      Página principal interactiva
-src/app/layout.tsx    Layout global
-src/app/globals.css   Tailwind y estilos base
-```
+- disponibilidad real
+- pagos reales
+- inventario o tarifas conectadas
+- integración activa con PMS/booking engine
 
-## Publicar en GitHub Pages
+## Assets y reemplazo de media
 
-Este ZIP ya incluye configuración para exportar el sitio como archivos estáticos y publicarlo con GitHub Actions.
+Mientras no entren fotos y video reales, el sitio usa imágenes de referencia externas. Cuando llegue material definitivo:
 
-### Pasos
+1. agregar archivos a `public/media/...`
+2. actualizar rutas en `src/content/villas.ts` y `src/content/media-delivery.ts`
+3. validar peso y formato de imágenes/video
+4. volver a exportar con `npm run build`
 
-1. Crea un repositorio en GitHub.
-2. Sube este proyecto al repositorio.
-3. En GitHub, ve a **Settings > Pages**.
-4. En **Build and deployment**, selecciona **GitHub Actions**.
-5. Haz push a la rama `main`.
-6. Espera a que termine el workflow **Deploy Next.js static site to GitHub Pages**.
+## Publicación en GitHub Pages
 
-El sitio se generará en la carpeta `out` durante el build y GitHub Pages publicará ese resultado.
+El proyecto ya está configurado para publicar con GitHub Actions.
 
-### Comandos útiles
+1. Crear el repositorio.
+2. Activar `Settings > Pages > Source: GitHub Actions`.
+3. Hacer push a `main`.
+4. Esperar el workflow `Deploy Next.js static site to GitHub Pages`.
 
-```bash
-npm install
-npm run build
-```
+## Documentación complementaria
 
-Para probar local:
-
-```bash
-npm run dev
-```
-
-
-## Solución a errores de instalación
-
-Si venías de una versión anterior del ZIP o npm te marca conflictos de dependencias, limpia la instalación:
-
-```bash
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
-```
-
-Para generar el build estático:
-
-```bash
-npm run build
-```
-
-Esta versión usa dependencias fijas para evitar conflictos con `latest`:
-
-- Next.js 14.2.15
-- React 18.3.1
-- Tailwind CSS 3.4.15
-- PostCSS 8.4.49
-- Autoprefixer 10.4.20
-
+- Arquitectura y transición A → B:
+  [docs/architecture-option-a-to-b.md](/Users/eltonsenftleben/VIsual%20Studio%20Code%20%20/mar-cocos-next-demo/docs/architecture-option-a-to-b.md)
+- Guía de media:
+  [public/media/README.md](/Users/eltonsenftleben/VIsual%20Studio%20Code%20%20/mar-cocos-next-demo/public/media/README.md)

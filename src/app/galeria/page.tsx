@@ -1,6 +1,6 @@
+import { gallery, mediaDeliveryGuide } from "@/content";
 import { AssetPlanCard } from "@/components/media-ready";
 import { PageIntro, PageSectionTitle } from "@/components/site-chrome";
-import { gallery, mediaDeliveryGuide } from "@/lib/site-data";
 
 export default function GalleryPage() {
   return (

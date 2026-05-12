@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "prepreview": "npm run build",
+    "preview": "python3 -m http.server 3000 -d out",
+    "prestart": "npm run build",
+    "start": "python3 -m http.server 3000 -d out",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "14.2.15",
