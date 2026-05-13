@@ -8,30 +8,31 @@ import { primaryNav } from "@/content";
 import { getBookingAction } from "@/features/booking";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
+  const textTone = dark ? "text-[#7A3A3A]" : "text-[#FAF6EF]";
+  const textSubtone = dark ? "text-[#7A3A3A]/75" : "text-[#FAF6EF]/80";
+  const symbolFilter = dark
+    ? "brightness(0) saturate(100%) invert(23%) sepia(21%) saturate(1203%) hue-rotate(314deg) brightness(92%) contrast(92%)"
+    : "brightness(0) saturate(100%) invert(100%) brightness(104%) contrast(100%)";
+
   return (
-    <div className="leading-none">
-      <div className="mb-1 h-5 w-28">
-        <svg viewBox="0 0 180 32" className="h-full w-full" fill="none">
-          <path
-            d="M1 20 C28 20, 45 4, 76 13 C93 18, 103 21, 120 14 C135 8, 144 9, 154 19 C164 30, 176 22, 179 22"
-            stroke={dark ? "#7A3A3A" : "#FAF6EF"}
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-        </svg>
+    <div className="inline-flex flex-col leading-none">
+      <div className="mb-1.5 h-[37px] w-[255px]">
+        <img
+          src="/logo-symbol.svg"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-contain object-left"
+          style={{
+            filter: symbolFilter,
+          }}
+        />
       </div>
-      <div
-        className={`text-lg font-black tracking-[0.18em] ${
-          dark ? "text-[#7A3A3A]" : "text-[#FAF6EF]"
-        }`}
-      >
-        MAR & COCOS
+      <div className={`flex items-baseline gap-[0.18em] text-[1.4rem] tracking-[0.18em] ${textTone}`}>
+        <span className="font-black">MAR</span>
+        <span className="font-medium tracking-[0.08em] opacity-90">&</span>
+        <span className="font-black">COCOS</span>
       </div>
-      <div
-        className={`mt-1 text-[10px] font-semibold tracking-[0.32em] ${
-          dark ? "text-[#7A3A3A]/75" : "text-[#FAF6EF]/80"
-        }`}
-      >
+      <div className={`mt-1.5 text-[12px] font-semibold tracking-[0.32em] ${textSubtone}`}>
         HOTEL/VILLAS
       </div>
     </div>
@@ -52,7 +53,17 @@ export function SiteHeader() {
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled((current) => {
+        if (current) {
+          return y > 8;
+        }
+
+        return y > 24;
+      });
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -68,14 +79,14 @@ export function SiteHeader() {
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 ${
-          scrolled ? "py-3" : "py-4"
+          scrolled ? "py-4" : "py-5"
         }`}
       >
         <Link href="/" className="text-left">
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-7 text-xs font-black uppercase tracking-[0.18em] lg:flex">
+        <nav className="hidden items-center gap-8 text-[13px] font-black uppercase tracking-[0.18em] lg:flex">
           {primaryNav.map((item) => (
             <Link
               key={item.href}
@@ -93,8 +104,8 @@ export function SiteHeader() {
         <Link
           href={stickyBookingAction.href ?? "/villas"}
           target={stickyBookingAction.target}
-          className={`hidden rounded-full bg-[#FAF6EF] px-6 text-xs font-black uppercase tracking-[0.18em] text-[#7A3A3A] transition hover:-translate-y-0.5 hover:bg-white hover:shadow-xl md:inline-flex ${
-            scrolled ? "py-2.5" : "py-3"
+          className={`hidden rounded-full bg-[#FAF6EF] px-7 text-[13px] font-black uppercase tracking-[0.18em] text-[#7A3A3A] transition hover:-translate-y-0.5 hover:bg-white hover:shadow-xl md:inline-flex ${
+            scrolled ? "py-3" : "py-3.5"
           }`}
           data-booking-event={stickyBookingAction.eventName}
           data-booking-kind={stickyBookingAction.kind}

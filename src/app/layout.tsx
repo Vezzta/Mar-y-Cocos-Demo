@@ -6,6 +6,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Mar & Cocos Hotel/Villas",
   description: "Demo interactivo para un hotel boutique de villas en Manzanillo, Colima.",
+  icons: {
+    icon: [
+      { url: "/favicon-monogram.svg", type: "image/svg+xml" },
+    ],
+    shortcut: ["/favicon-monogram.svg"],
+    apple: [
+      { url: "/favicon-monogram.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({

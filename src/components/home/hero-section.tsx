@@ -45,29 +45,9 @@ export function HomeHeroSection({
             Villas privadas, hospitalidad cálida y la belleza natural del
             Pacífico mexicano en una experiencia más íntima y aspiracional.
           </p>
-          <div className="animate-fade-up animation-delay-4 mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/villas"
-              className="magnetic-cta rounded-full bg-[#FAF6EF] px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-[#7A3A3A] shadow-xl"
-              data-analytics-event="navigation_home_cta_click"
-              data-analytics-category="navigation"
-              data-analytics-label="Explora las villas"
-            >
-              Explora las villas
-            </Link>
-            <Link
-              href="/galeria"
-              className="rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-white backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/15"
-              data-analytics-event="navigation_home_cta_click"
-              data-analytics-category="navigation"
-              data-analytics-label="Ver galería"
-            >
-              Ver galería
-            </Link>
-          </div>
         </div>
 
-        <div className="floating-card absolute right-8 top-10 hidden w-[320px] rounded-[2rem] border border-white/15 bg-[rgba(250,246,239,0.14)] p-5 text-white shadow-xl backdrop-blur-xl xl:block">
+        <div className="floating-card absolute right-8 top-[14%] hidden w-[320px] rounded-[2rem] border border-white/15 bg-[rgba(250,246,239,0.14)] p-5 text-white shadow-xl backdrop-blur-xl xl:block">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-white/70">
             Escape signature
           </p>
@@ -112,7 +92,7 @@ export function HomeHeroSection({
                 <div className="text-[10px] font-black uppercase tracking-widest text-[#7A3A3A]">
                   {label}
                 </div>
-                <div className="mt-2 flex items-center justify-between font-black">
+                <div className="mt-2 flex items-center justify-between text-[1.02rem] font-medium text-[#2D2420]">
                   <span>{value}</span>
                   <Icon
                     name={icon as IconName}
