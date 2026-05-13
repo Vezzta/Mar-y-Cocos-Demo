@@ -10,6 +10,7 @@ import { getBookingAction } from "@/features/booking";
 export function Logo({ dark = false }: { dark?: boolean }) {
   const textTone = dark ? "text-[#7A3A3A]" : "text-[#FAF6EF]";
   const textSubtone = dark ? "text-[#7A3A3A]/75" : "text-[#FAF6EF]/80";
+  const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const symbolFilter = dark
     ? "brightness(0) saturate(100%) invert(23%) sepia(21%) saturate(1203%) hue-rotate(314deg) brightness(92%) contrast(92%)"
     : "brightness(0) saturate(100%) invert(100%) brightness(104%) contrast(100%)";
@@ -18,7 +19,7 @@ export function Logo({ dark = false }: { dark?: boolean }) {
     <div className="inline-flex flex-col leading-none">
       <div className="mb-1.5 h-[37px] w-[255px]">
         <img
-          src="/logo-symbol.svg"
+          src={`${assetBase}/logo-symbol.svg`}
           alt=""
           aria-hidden="true"
           className="h-full w-full object-contain object-left"
